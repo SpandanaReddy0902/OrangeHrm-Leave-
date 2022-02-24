@@ -1,0 +1,73 @@
+package propertiesfile.pomtest;
+
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
+
+public class Assignleavespage {
+
+	@FindBy(id="menu_leave_viewLeaveModule")
+	public WebElement leaveee=null;
+	
+	@FindBy(linkText="Assign Leave")
+	public WebElement assignleav=null;
+	
+	@FindBy(id="assignleave_txtEmployee_empName")
+	public WebElement assignemployeename=null;
+	
+	@FindBy(id="assignleave_txtLeaveType")
+	public WebElement assignleavtp=null;
+	
+	@FindBy(id="assignleave_txtFromDate")
+	public WebElement assignleavefrom=null;
+	
+	@FindBy(id="assignleave_txtToDate")
+	public WebElement assignleavetodate=null;
+	
+	@FindBy(id="assignBtn")
+	public WebElement buttonassign=null;
+	
+	@FindBy(id="confirmOkButton")
+	public WebElement assignok=null;
+	
+	public Assignleavespom(WebDriver driver) {
+		PageFactory.initElements(driver, this);
+	}
+	
+	public void assignLeaves() throws Exception {
+		leaveee.click();
+		assignleav.click();
+		assignemployeename.click();
+		assignemployeename.clear();
+	}
+		
+	public void assignl(String name,String leavetype) {	
+		assignemployeename.sendKeys(name);
+		assignemployeename.sendKeys(Keys.DOWN,Keys.ENTER);
+		assignleavtp.click();
+		Select aal=new Select(assignleavtp);
+		aal.selectByVisibleText(leavetype);
+	}
+	
+	public void assignle(String fromdate) {
+		assignleavefrom.click();
+		assignleavefrom.clear();
+		assignleavefrom.sendKeys(fromdate);
+		assignleavefrom.sendKeys(Keys.DOWN,Keys.ENTER);
+	}
+	public void assignleave(String todate) {
+		assignleavetodate.click();
+		assignleavetodate.clear();
+		assignleavetodate.sendKeys(todate);
+		assignleavetodate.sendKeys(Keys.DOWN,Keys.ENTER);
+		buttonassign.click();
+		//assignok.click();
+		
+		
+		
+	}
+	
+}
